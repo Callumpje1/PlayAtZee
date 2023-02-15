@@ -17,4 +17,7 @@ import Welcome from "@/components/Welcome.vue";
 </template>
 
 <style scoped>
+main{
+  margin-top: 1.1rem;
+}
 </style>

@@ -39,6 +39,6 @@ export default {
 }
 
 #text{
-  color: beige;
+  color: white;
 }
 </style>
