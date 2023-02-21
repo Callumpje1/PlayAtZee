@@ -31,7 +31,7 @@ export default {
     const year = today.getFullYear();
 
     return {
-      currentDate: `Today is: ${dayOfWeek}, ${day} ${month} ${year}`,
+      currentDate: `${dayOfWeek}, ${day} ${month} ${year}`,
     };
   },
 };
