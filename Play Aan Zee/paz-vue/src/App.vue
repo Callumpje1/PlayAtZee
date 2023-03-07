@@ -1,8 +1,7 @@
 <script setup>
 import NavBar from "@/components/NavBar.vue";
 import Header from "@/components/Header.vue";
-import Welcome from "@/components/Welcome.vue";
-import CabinsOverview from "@/components/CabinsOverview.vue";
+import CabinsOverview from "@/components/CabinsOverview32.vue";
 </script>
 
 <template>
@@ -11,7 +10,6 @@ import CabinsOverview from "@/components/CabinsOverview.vue";
   <NavBar/>
 
   <main>
-    <Welcome/>
     <CabinsOverview/>
   </main>
 </template>

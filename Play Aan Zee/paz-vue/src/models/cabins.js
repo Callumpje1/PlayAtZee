@@ -1,5 +1,5 @@
 export default class Cabin {
-    constructor(id, type, location, description, image, pricePerWeek, numAvailable) {
+    constructor(id, type, location, description, image, pricePerWeek, numAvailable, isActive) {
         this.id = id;
         this.type = type;
         this.location = location;
@@ -7,6 +7,7 @@ export default class Cabin {
         this.image = image;
         this.pricePerWeek = pricePerWeek;
         this.numAvailable = numAvailable;
+        this.isActive = isActive;
     }
 
     static createSampleCabin(pId = 0) {
@@ -34,7 +35,7 @@ export default class Cabin {
         const type = cabinTypes[typeIndex];
         const location = cabinLocations[locationIndex];
         const image = CabinImages[imageIndex];
-        const description = `This cozy ${type} cabin is located in ${location}. It features a comfortable interior, stunning views, and is the perfect place to relax and enjoy the beach. Book now for only $${pricePerWeek} per week!`;
+        const description = `This cozy ${type} cabin is located in ${location}. It features a comfortable interior, stunning views, and is the perfect place to relax and enjoy the beach.`;
 
         return new Cabin(pId, type, location, description, image, pricePerWeek, numAvailable);
     }
@@ -42,11 +43,11 @@ export default class Cabin {
 }
 
 const CabinType = {
-    BEACH_GEAR: "BeachGear",
-    SMALL_DAYTIME: "SmallDayTime",
-    SMALL_LODGE: "SmallLodge",
-    LARGE_LODGE: "LargeLodge",
-    FAMILY_LODGE: "FamilyLodge"
+    BEACH_GEAR: "Beach Gear",
+    SMALL_DAYTIME: "Small DayTime",
+    SMALL_LODGE: "Small Lodge",
+    LARGE_LODGE: "Large Lodge",
+    FAMILY_LODGE: "Family Lodge"
 }
 
 const CabinLocation = {
