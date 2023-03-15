@@ -47,6 +47,7 @@
       </tr>
       </tbody>
     </table>
+    <button class="btn btn-danger mb-lg-2" @click="removeCabin()">Delete Cabin</button>
   </div>
   <div v-else>
     <h4 class="mt-lg-2">Please select a cabin from the list</h4>
@@ -55,15 +56,13 @@
 
 <script>
 import Cabin from "@/models/cabins";
-import Location from "@/models/Locations";
 import Locations from "@/models/Locations";
 
 export default {
   name: "CabinsDetail32",
   props: {
     cabin: {
-      type: Cabin,
-      required: true,
+      type: Cabin
     },
   },
   data() {
@@ -77,6 +76,14 @@ export default {
     updateCabin() {
       this.$emit("update-cabin", this.cabin);
     },
+    removeCabin() {
+      const confirmed = confirm("Are you sure you want to delete this cabin?");
+      if (confirmed) {
+        this.$emit("remove-cabin", this.cabin);
+        this.cabin = null;
+      }
+    },
+
   },
 };
 </script>

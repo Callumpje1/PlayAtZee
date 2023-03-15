@@ -2,9 +2,9 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-2">
-        <h5>Pick a Date:</h5> <!-- Title for the datepicker -->
+        <h5>Pick a Date:</h5>
         <Datepicker id="picker" v-model="date"></Datepicker>
-        <h5>Pick a Location:</h5> <!-- Title for the location list -->
+        <h5>Pick a Location:</h5>
         <ul>
           <li><a href="#">Katwijk aan zee</a></li>
           <li><a href="#">Rennesse</a></li>

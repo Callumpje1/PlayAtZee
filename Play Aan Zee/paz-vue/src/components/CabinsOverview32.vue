@@ -14,7 +14,7 @@
       </div>
     </div>
     <button class="btn btn-primary mt-lg-2" @click="addCabin">Add Cabin</button>
-    <app-cabins-detail :cabin="selectedCabin"></app-cabins-detail>
+    <cabins-detail32 v-bind:cabin="selectedCabin" v-on:remove-cabin="removeCabin"></cabins-detail32>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
     };
   },
   components: {
+    CabinsDetail32,
     'app-cabins-detail': CabinsDetail32
   },
   created() {
@@ -50,6 +51,13 @@ export default {
       const newCabin = Cabin.createSampleCabin(this.cabins.length + 100000 * 3);
       this.cabins.push(newCabin);
       this.activateCard(newCabin);
+    },
+    removeCabin(cabin) {
+      const index = this.cabins.indexOf(cabin);
+      if (index > -1) {
+        this.cabins.splice(index, 1);
+        this.selectedCabin = null;
+      }
     }
   },
 }
