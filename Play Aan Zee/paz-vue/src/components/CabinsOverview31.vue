@@ -20,7 +20,7 @@
     </tr>
     </tbody>
   </table>
-  <button class="btn btn-primary mt-3" @click="addCabin">Add Cabin</button>
+    <button class="btn btn-primary mt-3" @click="addCabin">Add Cabin</button>
 </template>
 
 
@@ -37,12 +37,12 @@ export default {
   },
   created() {
     for (let i = 0; i < 8; i++) {
-      this.cabins.push(Cabin.createSampleCabin(this.cabins.length - 1 + 3))
+      this.cabins.push(Cabin.createSampleCabin(this.cabins.length + 100000 * 3))
     }
   },
   methods: {
     addCabin() {
-      const newCabin = Cabin.createSampleCabin(this.cabins.length - 1 + 3);
+      const newCabin = Cabin.createSampleCabin(this.cabins.length + 100000 * 3);
       this.cabins.push(newCabin);
     }
   }

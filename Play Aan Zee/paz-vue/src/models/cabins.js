@@ -1,3 +1,9 @@
+import Locations from "@/models/Locations";
+import cabin_1 from "@/assets/cabins/cabin-1.jpg"
+import cabin_2 from "@/assets/cabins/cabin-2.jpg"
+import cabin_3 from "@/assets/cabins/cabin-3.jpg"
+import cabin_4 from "@/assets/cabins/cabin-4.jpg"
+
 export default class Cabin {
     constructor(id, type, location, description, image, pricePerWeek, numAvailable, isActive) {
         this.id = id;
@@ -19,27 +25,25 @@ export default class Cabin {
             CabinType.FAMILY_LODGE,
         ];
 
-        const cabinLocations = [
-            CabinLocation.IJMUIDEN,
-            CabinLocation.ZANDVOORT,
-            CabinLocation.WIJK_AAN_ZEE,
-            CabinLocation.OOSTENDE,
-            CabinLocation.RENNESSE
-        ];
-
         const typeIndex = Math.floor(Math.random() * cabinTypes.length);
-        const locationIndex = Math.floor(Math.random() * cabinLocations.length);
         const imageIndex = Math.floor(Math.random() * CabinImages.length);
         const pricePerWeek = Math.round(Math.random() * 2000 + 500);
         const numAvailable = Math.round(Math.random() * 5 + 5);
         const type = cabinTypes[typeIndex];
-        const location = cabinLocations[locationIndex];
+        const location = Locations.sampleLocation();
         const image = CabinImages[imageIndex];
         const description = `This cozy ${type} cabin is located in ${location}. It features a comfortable interior, stunning views, and is the perfect place to relax and enjoy the beach.`;
 
         return new Cabin(pId, type, location, description, image, pricePerWeek, numAvailable);
     }
 
+    static availableTypes() {
+        return CabinType
+    }
+
+    static availableImages() {
+        return CabinImages
+    }
 }
 
 const CabinType = {
@@ -49,19 +53,6 @@ const CabinType = {
     LARGE_LODGE: "Large Lodge",
     FAMILY_LODGE: "Family Lodge"
 }
-
-const CabinLocation = {
-    IJMUIDEN: "Ijmuiden",
-    ZANDVOORT: "Zandvoort",
-    RENNESSE: "Rennesse",
-    OOSTENDE: "Oostende",
-    WIJK_AAN_ZEE: "Wijk aan Zee"
-}
-
-import cabin_1 from "@/assets/cabins/cabin-1.jpg"
-import cabin_2 from "@/assets/cabins/cabin-2.jpg"
-import cabin_3 from "@/assets/cabins/cabin-3.jpg"
-import cabin_4 from "@/assets/cabins/cabin-4.jpg"
 
 const CabinImages = [cabin_1, cabin_2, cabin_3, cabin_4]
 

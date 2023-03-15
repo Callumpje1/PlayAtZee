@@ -13,6 +13,7 @@
         </div>
       </div>
     </div>
+    <button class="btn btn-primary mt-lg-2" @click="addCabin">Add Cabin</button>
     <app-cabins-detail :cabin="selectedCabin"></app-cabins-detail>
   </div>
 </template>
@@ -25,7 +26,7 @@ export default {
   data() {
     return {
       cabins: [],
-      selectedCabin: new Cabin,
+      selectedCabin: null,
     };
   },
   components: {
@@ -33,7 +34,7 @@ export default {
   },
   created() {
     for (let i = 0; i < 8; i++) {
-      this.cabins.push(Cabin.createSampleCabin(this.cabins.length - 1 + 3))
+      this.cabins.push(Cabin.createSampleCabin(this.cabins.length + 100000 * 3))
     }
   },
   methods: {
@@ -46,8 +47,9 @@ export default {
 
     },
     addCabin() {
-      const newCabin = Cabin.createSampleCabin(this.cabins.length - 1 + 3);
+      const newCabin = Cabin.createSampleCabin(this.cabins.length + 100000 * 3);
       this.cabins.push(newCabin);
+      this.activateCard(newCabin);
     }
   },
 }
@@ -55,6 +57,11 @@ export default {
 </script>
 
 <style>
+
+.row {
+  padding: 5px;
+}
+
 .card {
   border: none;
   display: inline-block;
@@ -64,7 +71,12 @@ export default {
 }
 
 .cabin.active .card {
-  background-color: aliceblue;
+  background-color: darkgrey;
+  color: whitesmoke;
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 
 .overflow-auto {

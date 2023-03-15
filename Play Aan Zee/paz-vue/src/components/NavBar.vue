@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light nav-fill">
     <div id="navbarSupportedContent" class="navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item px-2">
