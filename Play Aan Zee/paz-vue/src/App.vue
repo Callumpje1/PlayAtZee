@@ -1,7 +1,7 @@
 <script setup>
 import NavBar from "@/components/NavBar.vue";
 import Header from "@/components/Header.vue";
-import CabinsOverview from "@/components/CabinsOverview32.vue";
+import CabinsOverview from "@/components/cabins/Overview32.vue";
 </script>
 
 <template>

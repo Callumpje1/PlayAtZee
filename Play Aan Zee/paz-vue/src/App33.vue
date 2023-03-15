@@ -3,7 +3,6 @@
     <app-header />
     <app-nav-bar />
     <router-view />
-
   </div>
 </template>
 

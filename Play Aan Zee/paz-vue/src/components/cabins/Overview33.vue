@@ -3,7 +3,7 @@
     <div class="row flex-row flex-nowrap overflow-auto">
       <div v-for="cabin in cabins" :key="cabin.id"
            :class="{active: cabin.isActive}" class="cabin"
-           @click="activateCard(cabin)">
+           @click="onSelectCabin(cabin)">
         <div class="card">
           <img :src="cabin.image" alt="cabin image" class="card-img-top"/>
           <div class="card-body">
@@ -20,7 +20,7 @@
 
 <script>
 import Cabin from "@/models/cabins";
-import CabinsDetail32 from "@/components/CabinsDetail32.vue";
+import CabinsDetail32 from "@/components/cabins/Detail32.vue";
 
 export default {
   data() {
@@ -30,22 +30,33 @@ export default {
     };
   },
   components: {
-    CabinsDetail32,
-    'app-cabins-detail': CabinsDetail32
+    CabinsDetail32
   },
   created() {
     for (let i = 0; i < 8; i++) {
       this.cabins.push(Cabin.createSampleCabin(this.cabins.length + 100000 * 3))
     }
   },
+  watch:{
+    '$route'(){
+      const id = $route.params.id;
+      state.selectedCabin = findSelectedFromRouteParam(id);
+    }
+  },
   methods: {
+    onSelectCabin(cabin) {
+      if (cabin != null && cabin !== this.selectedCabin){
+        $router.push($route.matched[0].path + "/" + cabin.id)
+      }
+      this.$router.push(`/cabins/overview33/${cabin.id}`);
+      return this.selectedCabin;
+    },
     activateCard(cabin) {
       this.cabins.forEach((c) => {
         c.isActive = c.id === cabin.id;
       })
       this.selectedCabin = cabin;
       this.$emit('selectedCabin', cabin);
-
     },
     addCabin() {
       const newCabin = Cabin.createSampleCabin(this.cabins.length + 100000 * 3);
@@ -61,8 +72,8 @@ export default {
     }
   },
 }
-
 </script>
+
 
 <style>
 

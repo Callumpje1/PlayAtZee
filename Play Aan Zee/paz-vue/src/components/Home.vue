@@ -5,12 +5,9 @@
         <h5>Pick a Date:</h5>
         <Datepicker id="picker" v-model="date"></Datepicker>
         <h5>Pick a Location:</h5>
-        <ul>
-          <li><a href="#">Katwijk aan zee</a></li>
-          <li><a href="#">Rennesse</a></li>
-          <li><a href="#">Ijmuiden</a></li>
-          <li><a href="#">Ijmuiden</a></li>
-        </ul>
+        <div v-for="location in Locations.availableLocations()">
+          <li><a href="#">{{ location }}</a></li>
+        </div>
       </div>
       <div class="col-8">
         <div class="row">
@@ -61,10 +58,16 @@
 </template>
 
 <script>
+import Locations from "@/models/Locations";
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
+  computed: {
+    Locations() {
+      return Locations
+    }
+  },
   components: {Datepicker},
   data() {
     return {
