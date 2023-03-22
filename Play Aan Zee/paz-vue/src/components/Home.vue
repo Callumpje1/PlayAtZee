@@ -15,42 +15,42 @@
             <img
                 alt="Boat on Calm Water"
                 class="w-100 shadow-1-strong rounded mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+                src="src/assets/cabins/cabin-1.jpg"
             />
             <img
                 alt="Wintry Mountain Landscape"
                 class="w-100 shadow-1-strong rounded mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
+                src="src/assets/cabins/cabin-2.jpg"
             />
           </div>
           <div class="col-lg-4 mb-4 mb-lg-0">
             <img
                 alt="Mountains in the Clouds"
                 class="w-100 shadow-1-strong rounded mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
+                src="src/assets/cabins/cabin-3.jpg"
             />
             <img
                 alt="Boat on Calm Water"
                 class="w-100 shadow-1-strong rounded mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+                src="src/assets/cabins/cabin-4.jpg"
             />
           </div>
           <div class="col-lg-4 mb-4 mb-lg-0">
             <img
                 alt="Waves at Sea"
                 class="w-100 shadow-1-strong rounded mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
+                src="src/assets/cabins/cabin-2.jpg"
             />
             <img
                 alt="Yosemite National Park"
                 class="w-100 shadow-1-strong rounded mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
+                src="src/assets/cabins/cabin-3.jpg"
             />
           </div>
         </div>
       </div>
       <div class="col-2">
-        This is left content
+        This is right content
       </div>
     </div>
   </div>

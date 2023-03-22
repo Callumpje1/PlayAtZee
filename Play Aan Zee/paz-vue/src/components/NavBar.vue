@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light nav-fill">
     <div id="navbarSupportedContent" class="navbar-collapse">
       <ul class="navbar-nav mr-auto">
-        <li :class="{ active: $route.name === 'Home' }" class="nav-item">
+        <li class="nav-item">
           <router-link class="nav-link" to="/home">Home</router-link>
         </li>
         <li class="nav-item dropdown">
@@ -16,13 +16,13 @@
             Cabins
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <router-link class="dropdown-item" :to="{ name: 'CabinsOverview31' }">
+            <router-link class="dropdown-item" :to="{ name: 'Overview31' }">
               Cabins Overview 31
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'CabinsOverview32' }">
+            <router-link class="dropdown-item" :to="{ name: 'Overview32' }">
               Cabins Overview 32
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'CabinsOverview33' }">  // Add new route
+            <router-link class="dropdown-item" :to="{ name: 'Overview33' }">
               Cabins Overview 33
             </router-link>
           </div>
@@ -36,10 +36,10 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li :class="{ active: $route.name === 'Sign-up' }" class="nav-item">
+        <li class="nav-item">
           <router-link class="nav-link" to="/sign-up">Sign-up</router-link>
         </li>
-        <li :class="{ active: $route.name === 'Login' }" class="nav-item">
+        <li class="nav-item">
           <router-link class="nav-link" to="/login">Login</router-link>
         </li>
       </ul>

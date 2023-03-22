@@ -3,7 +3,7 @@
     <div class="row flex-row flex-nowrap overflow-auto">
       <div v-for="cabin in cabins" :key="cabin.id"
            :class="{active: cabin.isActive}" class="cabin"
-           @click="onSelectCabin(cabin)">
+           @click="activateCard(cabin)">
         <div class="card">
           <img :src="cabin.image" alt="cabin image" class="card-img-top"/>
           <div class="card-body">
@@ -14,13 +14,12 @@
       </div>
     </div>
     <button class="btn btn-primary mt-lg-2" @click="addCabin">Add Cabin</button>
-    <cabins-detail32 v-bind:cabin="selectedCabin" v-on:remove-cabin="removeCabin"></cabins-detail32>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import Cabin from "@/models/cabins";
-import CabinsDetail32 from "@/components/cabins/Detail32.vue";
 
 export default {
   data() {
@@ -29,33 +28,32 @@ export default {
       selectedCabin: null,
     };
   },
-  components: {
-    CabinsDetail32
-  },
   created() {
     for (let i = 0; i < 8; i++) {
       this.cabins.push(Cabin.createSampleCabin(this.cabins.length + 100000 * 3))
     }
   },
-  watch:{
-    '$route'(){
-      const id = $route.params.id;
-      state.selectedCabin = findSelectedFromRouteParam(id);
+  watch: {
+    '$route'() {
+      this.selectedCabin = this.findSelectedFromRouteParam(this.$route)
     }
   },
   methods: {
-    onSelectCabin(cabin) {
-      if (cabin != null && cabin !== this.selectedCabin){
-        $router.push($route.matched[0].path + "/" + cabin.id)
+    findSelectedFromRouteParam(route) {
+      const cabinId = Number(route.params.id)
+      const cabin = this.cabins.find(cabin => cabin.id === cabinId)
+
+      if (cabin) {
+        this.selectedCabin = cabin
+        return cabin
       }
-      this.$router.push(`/cabins/overview33/${cabin.id}`);
-      return this.selectedCabin;
     },
     activateCard(cabin) {
       this.cabins.forEach((c) => {
         c.isActive = c.id === cabin.id;
       })
       this.selectedCabin = cabin;
+      this.$router.push(this.$route.matched[0].path + "/" + cabin.id)
       this.$emit('selectedCabin', cabin);
     },
     addCabin() {
@@ -72,8 +70,8 @@ export default {
     }
   },
 }
-</script>
 
+</script>
 
 <style>
 

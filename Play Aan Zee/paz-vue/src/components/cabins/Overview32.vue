@@ -21,8 +21,6 @@
 <script>
 import Cabin from "@/models/cabins";
 import CabinsDetail32 from "@/components/cabins/Detail32.vue";
-import {reactive} from "vue";
-import {router} from "@/router";
 
 export default {
   data() {
@@ -47,7 +45,6 @@ export default {
       })
       this.selectedCabin = cabin;
       this.$emit('selectedCabin', cabin);
-
     },
     addCabin() {
       const newCabin = Cabin.createSampleCabin(this.cabins.length + 100000 * 3);

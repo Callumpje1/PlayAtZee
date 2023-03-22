@@ -1,21 +1,24 @@
-<script setup>
-import NavBar from "@/components/NavBar.vue";
-import Header from "@/components/Header.vue";
-import CabinsOverview from "@/components/cabins/Overview32.vue";
-</script>
-
 <template>
-  <Header/>
-
-  <NavBar/>
-
-  <main>
-    <CabinsOverview/>
-  </main>
+  <div>
+    <app-header />
+    <app-nav-bar />
+    <router-view />
+  </div>
 </template>
 
+<script>
+import AppHeader from "@/components/Header.vue";
+import AppNavBar from "@/components/NavBar.vue";
+
+export default {
+  name: "App",
+  components: {
+    AppHeader,
+    AppNavBar
+  }
+};
+</script>
+
 <style scoped>
-main {
-  margin-top: 1.1rem;
-}
+
 </style>

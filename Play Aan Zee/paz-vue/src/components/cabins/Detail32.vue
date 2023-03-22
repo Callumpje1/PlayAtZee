@@ -1,7 +1,7 @@
 <template>
   <div v-if="cabin">
     <table class="table table-striped mt-lg-1">
-      <h5>Cabin ID: {{ cabin.id }}</h5>
+      <h4>Cabin ID: {{ cabin.id }}</h4>
       <tbody>
       <tr>
         <th>Type</th>
@@ -64,6 +64,9 @@ export default {
     cabin: {
       type: Cabin
     },
+  },
+  created() {
+    console.log(this)
   },
   data() {
     return {
