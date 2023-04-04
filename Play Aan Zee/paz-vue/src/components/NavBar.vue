@@ -6,23 +6,23 @@
           <router-link class="nav-link" to="/home">Home</router-link>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"
-             href="#"
-             id="navbarDropdown"
-             role="button"
-             data-toggle="dropdown"
+          <a id="navbarDropdown"
+             aria-expanded="false"
              aria-haspopup="true"
-             aria-expanded="false">
+             class="nav-link dropdown-toggle"
+             data-toggle="dropdown"
+             href="#"
+             role="button">
             Cabins
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <router-link class="dropdown-item" :to="{ name: 'Overview31' }">
+          <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+            <router-link :to="{ name: 'Overview31' }" class="dropdown-item">
               Cabins Overview 31
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'Overview32' }">
+            <router-link :to="{ name: 'Overview32' }" class="dropdown-item">
               Cabins Overview 32
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'Overview33' }">
+            <router-link :to="{ name: 'Overview33' }" class="dropdown-item">
               Cabins Overview 33
             </router-link>
           </div>

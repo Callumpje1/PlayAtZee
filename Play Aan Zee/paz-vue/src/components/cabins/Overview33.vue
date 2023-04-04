@@ -14,12 +14,13 @@
       </div>
     </div>
     <button class="btn btn-primary mt-lg-2" @click="addCabin">Add Cabin</button>
-    <router-view/>
   </div>
+  <router-view/>
 </template>
 
 <script>
 import Cabin from "@/models/cabins";
+import {router} from "@/router";
 
 export default {
   data() {
@@ -33,27 +34,13 @@ export default {
       this.cabins.push(Cabin.createSampleCabin(this.cabins.length + 100000 * 3))
     }
   },
-  watch: {
-    '$route'() {
-      this.selectedCabin = this.findSelectedFromRouteParam(this.$route)
-    }
-  },
   methods: {
-    findSelectedFromRouteParam(route) {
-      const cabinId = Number(route.params.id)
-      const cabin = this.cabins.find(cabin => cabin.id === cabinId)
-
-      if (cabin) {
-        this.selectedCabin = cabin
-        return cabin
-      }
-    },
     activateCard(cabin) {
       this.cabins.forEach((c) => {
         c.isActive = c.id === cabin.id;
       })
       this.selectedCabin = cabin;
-      this.$router.push(this.$route.matched[0].path + "/" + cabin.id)
+      router.push({name: 'Detail32', params: {id: cabin.id}})
       this.$emit('selectedCabin', cabin);
     },
     addCabin() {
@@ -70,6 +57,7 @@ export default {
     }
   },
 }
+
 
 </script>
 

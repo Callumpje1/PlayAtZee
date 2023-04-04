@@ -23,8 +23,7 @@ const routes = [{
         {
             path: ':id',
             name: 'Detail32',
-            component: Detail32,
-            props: true
+            component: Detail32
         },
     ],
 }, {
@@ -37,6 +36,6 @@ const routes = [{
 
 export const
     router = createRouter({
-    history: createWebHashHistory(), routes,
-});
+        history: createWebHashHistory(), routes,
+    });
 

@@ -1,12 +1,12 @@
 <template>
-  <div v-if="cabin">
+  <div v-if="this.$route.params.cabin">
     <table class="table table-striped mt-lg-1">
-      <h4>Cabin ID: {{ cabin.id }}</h4>
+      <h4>Cabin ID: {{ this.$route.params.id}}</h4>
       <tbody>
       <tr>
         <th>Type</th>
         <td>
-          <select v-model="cabin.type" v-on:input="updateCabin">
+          <select v-model="this.$route.params.type" v-on:input="updateCabin">
             <option v-for="type in availableTypes" v-bind:value="type">{{ type }}</option>
           </select>
         </td>
@@ -14,7 +14,7 @@
       <tr>
         <th>Location</th>
         <td>
-          <select v-model="cabin.location" v-on:input="updateCabin">
+          <select v-model="this.$route.params.location" v-on:input="updateCabin">
             <option v-for="location in availableLocations" v-bind:value="location">{{ location }}</option>
           </select>
         </td>
@@ -22,19 +22,19 @@
       <tr>
         <th>Description</th>
         <td>
-          <input v-model="cabin.description" type="text" v-on:input="updateCabin"/>
+          <input v-model="this.$route.params.description" type="text" v-on:input="updateCabin"/>
         </td>
       </tr>
       <tr>
         <th>Price Per Week</th>
         <td>
-          <input v-model="cabin.pricePerWeek" type="number" v-on:input="updateCabin"/>
+          <input v-model="this.$route.params.pricePerWeek" type="number" v-on:input="updateCabin"/>
         </td>
       </tr>
       <tr>
         <th>Image</th>
         <td>
-          <select v-model="cabin.image" v-on:input="updateCabin">
+          <select v-model="this.$route.params.image" v-on:input="updateCabin">
             <option v-for="image in availableImages" v-bind:value="image">{{ image }}</option>
           </select>
         </td>
@@ -42,7 +42,7 @@
       <tr>
         <th>Available</th>
         <td>
-          <input v-model="cabin.numAvailable" type="number" v-on:input="updateCabin"/>
+          <input v-model="this.$route.params.numAvailable" type="number" v-on:input="updateCabin"/>
         </td>
       </tr>
       </tbody>
@@ -66,7 +66,7 @@ export default {
     },
   },
   created() {
-    console.log(this)
+    console.log(this.$route.params)
   },
   data() {
     return {
