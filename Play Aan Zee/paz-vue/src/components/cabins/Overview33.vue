@@ -3,7 +3,7 @@
     <div class="row flex-row flex-nowrap overflow-auto">
       <div v-for="cabin in cabins" :key="cabin.id"
            :class="{active: cabin.isActive}" class="cabin"
-           @click="activateCard(cabin)">
+           @click="onSelect(cabin)">
         <div class="card">
           <img :src="cabin.image" alt="cabin image" class="card-img-top"/>
           <div class="card-body">
@@ -14,8 +14,8 @@
       </div>
     </div>
     <button class="btn btn-primary mt-lg-2" @click="addCabin">Add Cabin</button>
+    <router-view :cabin="selectedCabin" @update-cabin="selectedCabin = $event" @remove-cabin="removeCabin($event)"/>
   </div>
-  <router-view/>
 </template>
 
 <script>
@@ -35,18 +35,28 @@ export default {
     }
   },
   methods: {
-    activateCard(cabin) {
+    onSelect(cabin) {
       this.cabins.forEach((c) => {
-        c.isActive = c.id === cabin.id;
-      })
-      this.selectedCabin = cabin;
-      router.push({name: 'Detail32', params: {id: cabin.id}})
-      this.$emit('selectedCabin', cabin);
+        if (c.id === cabin.id) {
+          c.isActive = !c.isActive;
+        } else {
+          c.isActive = false;
+        }
+      });
+      if (cabin.isActive) {
+        this.selectedCabin = cabin;
+        router.push({name: "Detail32", params: {id: cabin.id}});
+        this.$emit("selectedCabin", cabin);
+      } else {
+        this.selectedCabin = null
+        router.back()
+        this.$emit("selectedCabin", null)
+      }
     },
     addCabin() {
       const newCabin = Cabin.createSampleCabin(this.cabins.length + 100000 * 3);
       this.cabins.push(newCabin);
-      this.activateCard(newCabin);
+      this.onSelect(newCabin);
     },
     removeCabin(cabin) {
       const index = this.cabins.indexOf(cabin);
@@ -54,7 +64,7 @@ export default {
         this.cabins.splice(index, 1);
         this.selectedCabin = null;
       }
-    }
+    },
   },
 }
 
@@ -76,7 +86,7 @@ export default {
 }
 
 .cabin.active .card {
-  background-color: darkgrey;
+  background-color: darkolivegreen;
   color: whitesmoke;
 }
 

@@ -23,7 +23,8 @@ const routes = [{
         {
             path: ':id',
             name: 'Detail32',
-            component: Detail32
+            component: Detail32,
+            props: true
         },
     ],
 }, {
