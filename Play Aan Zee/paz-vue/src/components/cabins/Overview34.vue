@@ -45,11 +45,11 @@ export default {
       });
       if (cabin.isActive) {
         this.selectedCabin = cabin;
-        router.push({name: "Detail32", params: {id: cabin.id}});
+        router.push({name: "Detail34", params: {id: cabin.id}});
         this.$emit("selectedCabin", cabin);
       } else {
         this.selectedCabin = null
-        router.push({name: "Overview33"});
+        router.push({name: "Overview34"})
         this.$emit("selectedCabin", null)
       }
     },

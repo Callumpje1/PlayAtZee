@@ -5,6 +5,8 @@ import Overview32 from "@/components/cabins/Overview32.vue";
 import Overview31 from "@/components/cabins/Overview31.vue";
 import Overview33 from "@/components/cabins/Overview33.vue";
 import Detail32 from "@/components/cabins/Detail32.vue";
+import Overview34 from "@/components/cabins/Overview34.vue";
+import Detail34 from "@/components/cabins/Detail34.vue";
 
 const routes = [{
     path: "/", redirect: "/home",
@@ -24,6 +26,18 @@ const routes = [{
             path: ':id',
             name: 'Detail32',
             component: Detail32,
+            props: true
+        },
+    ],
+},{
+    path: '/cabins/overview34',
+    name: 'Overview34',
+    component: Overview34,
+    children: [
+        {
+            path: ':id',
+            name: 'Detail34',
+            component: Detail34,
             props: true
         },
     ],

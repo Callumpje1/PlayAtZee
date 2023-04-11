@@ -25,6 +25,9 @@
             <router-link :to="{ name: 'Overview33' }" class="dropdown-item">
               Cabins Overview 33
             </router-link>
+            <router-link :to="{ name: 'Overview34' }" class="dropdown-item">
+              Cabins Overview 34 (Guarded)
+            </router-link>
           </div>
         </li>
 
