@@ -21,6 +21,10 @@ export default class Locations {
         return cabinLocation[locationIndex]
     }
 
+    static copyConstructor(location){
+        if (location == null) return null
+        return Object.assign(new Locations(location))
+    }
 }
 
 const CabinLocation = {

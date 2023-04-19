@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Cabin from "@/models/cabins";
+import Cabin from "@/models/Cabins";
 import {router} from "@/router";
 
 export default {

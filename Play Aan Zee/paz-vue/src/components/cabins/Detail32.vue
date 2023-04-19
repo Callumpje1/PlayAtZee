@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import Cabin from "@/models/cabins";
+import Cabin from "@/models/Cabins";
 import Locations from "@/models/Locations";
 
 export default {
@@ -69,9 +69,6 @@ export default {
     };
   },
   methods: {
-    updateCabin() {
-      this.$emit("update-cabin", this.cabin);
-    },
     removeCabin() {
       const confirmed = confirm("Are you sure you want to delete this cabin?");
       try {

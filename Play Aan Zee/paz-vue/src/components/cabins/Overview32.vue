@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Cabin from "@/models/cabins";
+import Cabin from "@/models/Cabins";
 import CabinsDetail32 from "@/components/cabins/Detail32.vue";
 
 export default {

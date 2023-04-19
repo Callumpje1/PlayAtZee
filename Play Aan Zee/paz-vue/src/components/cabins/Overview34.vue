@@ -13,13 +13,13 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-primary mt-lg-2" @click="addCabin">Add Cabin</button>
-    <router-view :cabin="selectedCabin" @update-cabin="selectedCabin = $event" @remove-cabin="removeCabin($event)"/>
+    <button class="btn btn-outline-success mt-lg-2" @click="addCabin">Add Cabin</button>
+    <router-view :cabin="selectedCabin" @update-cabin="onUpdate($event)" @remove-cabin="removeCabin($event)"/>
   </div>
 </template>
 
 <script>
-import Cabin from "@/models/cabins";
+import Cabin from "@/models/Cabins";
 import {router} from "@/router";
 
 export default {
@@ -35,6 +35,9 @@ export default {
     }
   },
   methods: {
+    onUpdate(tempCabin){
+      this.selectedCabin = tempCabin
+    },
     onSelect(cabin) {
       this.cabins.forEach((c) => {
         if (c.id === cabin.id) {
@@ -86,7 +89,6 @@ export default {
 }
 
 .cabin.active .card {
-  background-color: darkolivegreen;
   color: whitesmoke;
 }
 

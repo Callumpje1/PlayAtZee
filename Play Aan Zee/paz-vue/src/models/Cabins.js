@@ -44,6 +44,13 @@ export default class Cabin {
     static availableImages() {
         return CabinImages
     }
+
+    static copyConstructor(cabin, cabinLocation) {
+        if (cabin == null) return null
+        let copy = Object.assign(new Cabin(0), cabin)
+        cabinLocation = Locations.copyConstructor(cabin.location)
+        return copy + cabinLocation
+    }
 }
 
 const CabinType = {

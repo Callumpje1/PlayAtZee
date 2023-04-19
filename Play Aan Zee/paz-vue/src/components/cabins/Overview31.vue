@@ -25,7 +25,7 @@
 
 
 <script>
-import Cabin from "@/models/cabins.js";
+import Cabin from "@/models/Cabins.js";
 
 export default {
   name: "CabinsOverview",
