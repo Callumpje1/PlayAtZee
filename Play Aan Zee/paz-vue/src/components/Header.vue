@@ -1,18 +1,20 @@
 <template>
   <div class="jumbotron-fluid">
-    <div class="row">
-      <div class="col-sm-4">
-        <img alt="Image1" class="img-fluid" src="src/assets/nemo.png">
-      </div>
-      <div id="text" class="col-sm-4 text-center">
-        <h1 class="display-4">Play at Zee</h1>
-        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center">
-          <p class="lead mr-lg-2">Chill out and feel good</p>
-          <p id="currentDate">{{ currentDate }}</p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <img alt="Image1" class="img-fluid" src="src/assets/nemo.png">
         </div>
-      </div>
-      <div class="col-sm-4">
-        <img id="right" alt="Image2" class="img-fluid" src="src/assets/shell.png">
+        <div id="text" class="col-sm-4 text-center">
+          <h1 class="display-4">Play at Zee</h1>
+          <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center">
+            <p class="lead mr-lg-2">Chill out and feel good</p>
+            <p id="currentDate">{{ currentDate }}</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <img id="right" alt="Image2" class="img-fluid" src="src/assets/shell.png">
+        </div>
       </div>
     </div>
   </div>
@@ -56,6 +58,8 @@ export default {
 #text {
   color: white;
 }
+
+
 
 #currentDate {
   color: white;

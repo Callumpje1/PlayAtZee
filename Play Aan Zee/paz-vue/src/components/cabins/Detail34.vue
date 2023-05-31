@@ -6,7 +6,7 @@
       <tr>
         <th>Type</th>
         <td>
-          <select v-model="tempCabin.type">
+          <select v-model="this.cabinCopy.type">
             <option v-for="type in availableTypes">{{ type }}</option>
           </select>
         </td>
@@ -14,7 +14,7 @@
       <tr>
         <th>Location</th>
         <td>
-          <select v-model="tempCabin.location">
+          <select v-model="this.cabinCopy.location">
             <option v-for="location in availableLocations">{{ location }}</option>
           </select>
         </td>
@@ -22,19 +22,19 @@
       <tr>
         <th>Description</th>
         <td>
-          <input v-model="tempCabin.description" type="text"/>
+          <input v-model="this.cabinCopy.description" type="text"/>
         </td>
       </tr>
       <tr>
         <th>Price Per Week</th>
         <td>
-          <input v-model="tempCabin.pricePerWeek" type="number"/>
+          <input v-model="this.cabinCopy.pricePerWeek" type="number"/>
         </td>
       </tr>
       <tr>
         <th>Image</th>
         <td>
-          <select v-model="tempCabin.image">
+          <select v-model="this.cabinCopy.image">
             <option v-for="image in availableImages">{{ image }}</option>
           </select>
         </td>
@@ -42,16 +42,16 @@
       <tr>
         <th>Available</th>
         <td>
-          <input v-model="tempCabin.numAvailable" type="number"/>
+          <input v-model="this.cabinCopy.numAvailable" type="number"/>
         </td>
       </tr>
       </tbody>
     </table>
     <div class="btn-toolbar" role="group">
-      <button class="btn btn-outline-danger mr-2" type="button" @click="saveCabin()">Save</button>
+      <button class="btn btn-outline-danger mr-2" type="button" @click="saveChanges()">Save</button>
       <button class="btn btn-outline-danger mr-2" type="button" @click="cancelChanges()">Cancel</button>
       <button class="btn btn-outline-danger mr-2" type="button" @click="resetChanges()">Reset</button>
-      <button class="btn btn-outline-danger mr-2" type="button" @click="clearChanges()">Clear</button>
+      <button class="btn btn-outline-danger mr-2" type="button" @click="clearEdit()">Clear</button>
       <button class="btn btn-outline-danger mr-2" type="button" @click="removeCabin()">Delete</button>
     </div>
   </div>
@@ -67,40 +67,41 @@ import Locations from "@/models/Locations";
 export default {
   name: "CabinsDetail34",
   props: ['cabin'],
-  emits: ['update-cabin'],
+  emits: ['save-changes', 'remove-cabin'],
   data() {
     return {
-      tempCabin: this.cabin,
       availableTypes: Cabin.availableTypes(),
       availableImages: Cabin.availableImages(),
-      availableLocations: Locations.availableLocations()
+      availableLocations: Locations.availableLocations(),
+      cabinCopy: null
     };
   },
+  created() {
+    this.cabinCopy = Cabin.copyConstructor(this.cabin)
+  },
   watch: {
-    cabin() {
-      this.tempCabin = Cabin.copyConstructor(this.cabin)
-    }
+    cabin(newValue) {
+      this.cabinCopy = Cabin.copyConstructor(newValue);
+    },
   },
   methods: {
-    saveCabin() {
-      const confirmed = confirm("Would you like to save the changes?");
-      try {
-        if (confirmed) {
-          this.$emit("update-cabin", this.tempCabin);
-          console.log(this.tempCabin)
-          console.log(this.cabin)
-        }
-      } catch (error) {
-        console.log(error);
+    saveChanges() {
+      const confirmed = confirm("Do you want to save your changes?");
+      if (confirmed) {
+        this.$emit("save-changes", this.cabinCopy);
       }
     },
-    cancelChanges() {
-
-    },
     resetChanges() {
-
+      this.cabinCopy = this.cabin
     },
-    clearChanges() {
+    clearEdit() {
+      const {id, ...rest} = this.cabinCopy;
+      Object.keys(rest).forEach((key) => {
+        this.cabinCopy[key] = null;
+      });
+    },
+    //TODO
+    cancelChanges() {
 
     },
     removeCabin() {
@@ -108,7 +109,6 @@ export default {
       try {
         if (confirmed) {
           this.$emit("remove-cabin", this.cabin);
-          this.cabin = null;
         }
       } catch (error) {
         console.log(error);
@@ -119,8 +119,5 @@ export default {
 </script>
 
 <style scoped>
-input,
-textarea {
-  width: 80%;
-}
+
 </style>

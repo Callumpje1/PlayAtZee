@@ -23,7 +23,7 @@ export default class Locations {
 
     static copyConstructor(location){
         if (location == null) return null
-        return Object.assign(new Locations(location))
+        return location
     }
 }
 

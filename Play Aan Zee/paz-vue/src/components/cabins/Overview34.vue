@@ -1,10 +1,10 @@
 <template>
-  <div class="container-fluid mt-lg-1 ml-lg-2">
+  <div class="container-fluid mt-lg-1">
     <div class="row flex-row flex-nowrap overflow-auto">
       <div v-for="cabin in cabins" :key="cabin.id"
            :class="{active: cabin.isActive}" class="cabin"
            @click="onSelect(cabin)">
-        <div class="card">
+        <div class="card shadow-sm">
           <img :src="cabin.image" alt="cabin image" class="card-img-top"/>
           <div class="card-body">
             <b class="card-title mb-lg-1">{{ cabin.type }}</b>
@@ -14,7 +14,9 @@
       </div>
     </div>
     <button class="btn btn-outline-success mt-lg-2" @click="addCabin">Add Cabin</button>
-    <router-view :cabin="selectedCabin" @update-cabin="onUpdate($event)" @remove-cabin="removeCabin($event)"/>
+    <router-view :cabin="this.selectedCabin"
+                 @save-changes="onSaveChanges"
+                 @remove-cabin="removeCabin"/>
   </div>
 </template>
 
@@ -35,25 +37,29 @@ export default {
     }
   },
   methods: {
-    onUpdate(tempCabin){
-      this.selectedCabin = tempCabin
-    },
-    onSelect(cabin) {
+    onSelect(tempCabin) {
       this.cabins.forEach((c) => {
-        if (c.id === cabin.id) {
+        if (c.id === tempCabin.id) {
           c.isActive = !c.isActive;
         } else {
           c.isActive = false;
         }
-      });
-      if (cabin.isActive) {
-        this.selectedCabin = cabin;
-        router.push({name: "Detail34", params: {id: cabin.id}});
-        this.$emit("selectedCabin", cabin);
+      })
+
+      if (tempCabin.isActive) {
+        this.selectedCabin = tempCabin;
+        router.push({name: "Detail34", params: {id: tempCabin.id}});
+        this.$emit("selectedCabin", tempCabin);
       } else {
         this.selectedCabin = null
         router.push({name: "Overview34"})
         this.$emit("selectedCabin", null)
+      }
+    },
+    onSaveChanges(tempCabin) {
+      const index = this.cabins.indexOf(this.selectedCabin);
+      if (index > -1) {
+        this.cabins[index] = Object.assign({}, tempCabin);
       }
     },
     addCabin() {
@@ -79,6 +85,7 @@ export default {
 .row {
   padding: 5px;
 }
+
 
 .card {
   border: none;

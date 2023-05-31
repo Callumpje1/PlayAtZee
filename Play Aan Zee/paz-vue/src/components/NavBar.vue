@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light nav-fill">
+  <nav class="navbar-expand navbar-light bg-light">
     <div id="navbarSupportedContent" class="navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -57,4 +57,10 @@ export default {
 </script>
 
 <style scoped>
+
+.navbar-nav{
+  padding-left:30px;
+  padding-right:30px;
+}
+
 </style>

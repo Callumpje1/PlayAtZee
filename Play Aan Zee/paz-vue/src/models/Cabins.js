@@ -45,11 +45,11 @@ export default class Cabin {
         return CabinImages
     }
 
-    static copyConstructor(cabin, cabinLocation) {
+    static copyConstructor(cabin) {
         if (cabin == null) return null
         let copy = Object.assign(new Cabin(0), cabin)
-        cabinLocation = Locations.copyConstructor(cabin.location)
-        return copy + cabinLocation
+        copy.location = Locations.copyConstructor(cabin.location)
+        return copy
     }
 }
 

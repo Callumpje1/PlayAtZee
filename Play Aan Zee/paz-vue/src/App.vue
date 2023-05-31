@@ -1,8 +1,10 @@
 <template>
   <div>
-    <app-header />
-    <app-nav-bar />
-    <router-view />
+    <app-header/>
+    <app-nav-bar/>
+    <div class="container-fluid mb-2">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -20,5 +22,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
